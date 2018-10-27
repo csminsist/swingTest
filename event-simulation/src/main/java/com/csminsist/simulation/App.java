@@ -1,39 +1,66 @@
 package com.csminsist.simulation;
 
-import javax.swing.plaf.SliderUI;
-
-import com.csminsist.simulation.utils.mouse.MouseEvent;
+import com.csminsist.simulation.utils.keybord.KeyPressedCallback;
+import com.csminsist.simulation.utils.keybord.PKeysEvent;
 import com.csminsist.simulation.utils.mouse.MouseMthods;
 
 /**
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-        new Thread(new Runnable() {
+public class App {
+	public static void main(String[] args) {
+//
+//		Thread keylistener = new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				PKeysEvent pKeysEvent = new PKeysEvent();
+//				pKeysEvent.addWatch(new KeyPressedCallback() {
+//					@Override
+//					public void keypressed(int keycode) {
+//						System.out.println(keycode);
+//					}
+//				});
+//				while(true) {
+//					try {
+//						Thread.sleep(100);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			}
+//		});
+//		keylistener.start();
+		new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
 				try {
-					Thread.sleep(3000);
+					Thread.sleep(5000);
 				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				MouseEvent.click();
+				MouseMthods.move(1438, 665);
+				
 			}
 		}).start();
-        
-        while(true) {
-        	try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-        }
-        
-    }
+		
+//		int[] mouseLocation = MouseMthods.getMouseLocation();
+//		
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				MouseMthods.move(mouseLocation[0], mouseLocation[1]);
+//				while (true) {
+//					KeybordMethod.keyPress("f2");
+//					try {
+//						Thread.sleep(60);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			}
+//		});
+	}
 }
